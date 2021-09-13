@@ -1,0 +1,28 @@
+<button (click)="onShowConfigsForm()"
+  class="text-white bg-green-500 hover:bg-green-400 rounded-full fixed top-10 right-5 p-4 animate-bounce">Configs</button>
+<div [class.flex]="showModal" [class.hidden]="!showModal"
+  class="w-full hidden flex-col justify-center align-middle h-screen absolute z-10 bg-gray-900 bg-opacity-40">
+  <div class="flex flex-row justify-center w-full">
+    <div class="w-1/5 flex-col flex bg-green-50 rounded">
+      <div class="flex flex-row-reverse">
+        <button (click)="onCloseConfigsForm()" class="mr-1 mt-1">X</button>
+      </div>
+      <form class="px-6 pt-3 pb-6" [formGroup]="configsForm" action="">
+        <div class="flex flex-col w-full">
+          <h1 class="text-center font-bold mb-2">Configurations</h1>
+          <div class="my-2 flex flex-col w-full">
+            <label class="text-sm" for="data-select-languages">Voices</label>
+            <select (change)="onVoiceSelection()" formControlName="voice" name="data-select-voices" id="">
+              <option value="" disabled selected>Select a voice</option>
+              <option *ngFor="let voice of voices" [value]="voice.name">{{ voice.text }}</option>
+            </select>
+          </div>
+          <div class="mt-4 mb-2 flex flex-row justify-center w-full">
+            <button [disabled]="!configsForm.valid"
+              class="text-white bg-green-500 hover:bg-green-400 rounded px-4 py-3">Keep this, bot!</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
