@@ -1,0 +1,35 @@
+<button (click)="showModal.set(true)"
+    class="fixed p-4 text-white bg-green-500 rounded-full hover:bg-green-400 top-10 right-5 animate-bounce">Configs</button>
+
+
+<!-- Modal -->
+@if (showModal()) {
+<div [class.flex]="showModal()" [class.hidden]="!showModal()"
+    class="absolute inset-0 z-10 flex-col items-center justify-center hidden w-full h-full bg-gray-900 bg-opacity-30">
+    <form class="relative flex flex-col px-6 pt-3 pb-6 text-black rounded backdrop-blur bg-opacity-70 bg-slate-100"
+        [formGroup]="configsForm">
+        <button (click)="showModal.set(false)" class="absolute right-0 font-bold text-white text-md -top-8">
+            Close
+        </button>
+        <h1 class="mb-2 font-bold text-center">Configurations</h1>
+        <div class="flex flex-col w-full my-2">
+            <label class="text-sm" for="data-select-languages">Voices</label>
+            <select formControlName="voice" name="data-select-voices" id="">
+                <option value="" disabled selected>Select a voice</option>
+                @for (voice of voices(); track voice.name) {
+                <option [value]="voice.name">
+                    {{ voice.name }} ({{ voice.lang }})
+                    @if (voice.default) {
+                    -- default
+                    }
+                </option>
+                }
+            </select>
+        </div>
+        <button [disabled]="!configsForm.valid"
+            class="px-4 py-3 mx-auto mt-4 mb-2 text-white bg-green-500 rounded cursor-pointer hover:bg-green-400">Keep
+            this,
+            bot!</button>
+    </form>
+</div>
+}

@@ -4,10 +4,8 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
+    imports: [AppComponent]
+}).compileComponents();
   });
 
   it('should create the app', () => {
@@ -16,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'joker-teller'`, () => {
+  it(`should have as title 'jokes-teller'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('joker-teller');
+    expect(app.title).toEqual('jokes-teller');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('joker-teller app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('jokes-teller app is running!');
   });
 });

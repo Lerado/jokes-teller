@@ -1,0 +1,11 @@
+<!-- Settings -->
+<app-jokes-bot-settings [voices]="voices()"></app-jokes-bot-settings>
+<div class="flex flex-row justify-center w-full align-middle">
+    <div class="flex flex-col justify-center w-full md:w-3/5 lg:w-1/5">
+        <img src="assets/robot.gif" alt="">
+        <button (click)="tellRandomJoke(); $event.stopPropagation()"
+            class="p-2 mx-2 mt-6 uppercase transition-colors bg-green-500 rounded hover:bg-green-400">
+            Say a joke
+        </button>
+    </div>
+</div>

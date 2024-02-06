@@ -1,0 +1,5 @@
+{
+    "production": false,
+    "apiBaseUrl": "https://v2.jokeapi.dev/",
+    "apiPrefix": ""
+}
